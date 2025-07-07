@@ -32,7 +32,7 @@
 
  ## Sprint Board Screenshotları
 Sprint 1 görev takibi Notion üzerinden yapılmıştır.
-![Sprint Board](docs/Sprint1.13.PNG)
+![Sprint Board](Sprint1.13.PNG)
 
 ## Sprint Retrospective
 
