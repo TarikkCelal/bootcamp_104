@@ -21,10 +21,6 @@
 - Henüz geliştirme aşamasına geçilmediğinden günlük scrum toplantıları yapılmamıştır.
 - İletişim ve koordinasyon WhatsApp üzerinden sağlanmaktadır.
 
-## Sprint Board Screenshotları
-- Sprint 1 için görev dağılımı ve fikir geliştirme aşaması Notion’da takip edilmektedir.
-- Görsel: *(İstersen Notion backlog veya görev tablosu ekran görüntüsü buraya eklenebilir)*
-
 ## Ürün Durumu: Ekran Görüntüleri
 - Ürün geliştirilmesine başlanmadığı için arayüz veya çıktı ekran görüntüsü bulunmamaktadır.
 
