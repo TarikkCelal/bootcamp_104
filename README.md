@@ -75,14 +75,6 @@ Tüm görevler, sprint notları ve proje dokümantasyonu **Notion üzerinden** t
 
 ---
 
-## Sprint Board Screenshotları
-
-Sprint 1 görev takibi Notion üzerinden yapılmıştır.
-
-![Sprint Board](docs/Sprint1.13.PNG)
-
----
-
 ## 📁 Sprint Raporları
 
 - 📄 [Sprint 1 Raporu](docs/Sprint1.md)
