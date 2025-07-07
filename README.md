@@ -78,7 +78,6 @@ Tüm görevler, sprint notları ve proje dokümantasyonu **Notion üzerinden** t
 ## 📁 Sprint Raporları
 
 - 📄 [Sprint 1 Raporu](docs/Sprint1.md)
-- 📄 [Sprint 2 Raporu]()
 
 ---
 
