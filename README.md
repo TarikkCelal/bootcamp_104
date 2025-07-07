@@ -1,6 +1,3 @@
-# bootcamp_104
-YZTA Bootcamp - 104
-
 # 💊 MediGuard AI
 
 ## 🧠 Proje Tanıtımı
