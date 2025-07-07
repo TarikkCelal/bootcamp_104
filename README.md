@@ -71,7 +71,15 @@ Kullanıcının birden fazla ilaç ismi girmesiyle birlikte, yapay zeka destekli
 
 Tüm görevler, sprint notları ve proje dokümantasyonu **Notion üzerinden** takip edilmektedir.
 
-👉 [🔗 Notion Proje Sayfası – MediGuard AI](https://www.notion.so/229116d46c038018b913dc3f40e0b152?source=copy_link)  
+👉 [🔗 Notion Proje Sayfası – MediGuard AI](https://www.notion.so/229116d46c038018b913dc3f40e0b152?source=copy_link)
+
+---
+
+## Sprint Board Screenshotları
+
+Sprint 1 görev takibi Notion üzerinden yapılmıştır.
+
+![Sprint Board](Sprint1.13.PNG)
 
 ---
 
