@@ -30,6 +30,10 @@
 - Takım rollerine karar verildi.
 - Geliştirme sürecinin nasıl ilerleyeceği konuşuldu.
 
+ ## Sprint Board Screenshotları
+Sprint 1 görev takibi Notion üzerinden yapılmıştır.
+![Sprint Board](docs/Sprint1.13.PNG)
+
 ## Sprint Retrospective
 
 ### İyi Gidenler
