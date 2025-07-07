@@ -20,7 +20,7 @@
 ## Daily Scrum
 - Henüz geliştirme aşamasına geçilmediğinden günlük scrum toplantıları yapılmamıştır.
 - İletişim ve koordinasyon WhatsApp üzerinden sağlanmaktadır.
-- ![Daily Scrum Ekran Görüntüsü](./docs/Sprint1.1.PNG)
+- ![Daily Scrum Ekran Görüntüsü](docs/Sprint1.1.PNG)
 
 ## Ürün Durumu: Ekran Görüntüleri
 - Ürün geliştirilmesine başlanmadığı için arayüz veya çıktı ekran görüntüsü bulunmamaktadır.
