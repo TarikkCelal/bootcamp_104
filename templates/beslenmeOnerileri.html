@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diabalysis - Beslenme Ve Diyet Önerisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/beslenmeOnerileri.css') }}"> <!-- Beslenme Önerileri CSS dosyası -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar (Üst menü) -->
+<nav class="navbar navbar-expand-lg shadow-sm">
+  <div class="container">
+    <!-- Logo Yer Tutucu -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <div class="logo me-2"></div> <!-- Buraya logo yerleştirilecek -->
+      <span class="fw-bold text-dark">diabalysis</span>
+    </a>
+
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav me-3">
+        <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Ana Sayfa</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path == '/hakkimizda' %}active{% endif %}" href="/hakkimizda">Hakkında</a></li>
+
+        {% if 'email' in session %}
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="/profil">
+              <img src="{{ url_for('static', filename=session.get('profil_foto', 'img/user.png')) }}" alt="Profil" class="navbar-avatar">
+            </a>
+          </li>
+        {% else %}
+          <!-- Giriş yapılmamışsa: giriş yap butonu göster -->
+          <li class="nav-item d-flex align-items-center">
+            <a class="btn btn-orange ms-2" href="/bize-katil">Giriş Yap</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <!-- Diyabet Risk Analizi Başlığı ve Açıklaması -->
+    <section class="py-5 ">
+      <div class="container">
+        <h4 class="display-4 fw-bold">Beslenme Ve Diyet</h4>
+      </div>
+    </section>
+
+<!-- İçerik -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+
+           <!-- Sol: Başlık + Doktor Görseli -->
+      <div class="col-md-4 d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="fw-bold">Sağlıklı bir yaşam için doğru adımları atmaya hazır mısınız?</h5>
+          <p>Yapay zeka destekli sistemimiz, verdiğiniz sağlık verilerini analiz ederek size özel beslenme ve diyet önerileri sunuyor.</p>
+          <p>Bu sayfada, diyabet riskinizi azaltmak, kan şekerinizi dengede tutmak ve genel yaşam kalitenizi artırmak için ihtiyacınız olan tüm bilgileri bulacaksınız.</p>
+        </div>
+        <img src="{{ url_for('static', filename='img/doktor.png') }}" class="img-fluid rounded shadow mt-3">
+      </div>
+
+      <!-- Orta: AI Görseli + Liste -->
+      <div class="col-md-4 d-flex flex-column justify-content-between">
+        <div>
+          <img src="{{ url_for('static', filename='img/anasayfaResmi.png') }}" class="img-fluid mb-3" alt="AI">
+          <h5 class="fw-bold">Yapay Zeka Destekli Beslenme Önerisi Nasıl Çalışır?</h5>
+          <p>Sistemimiz şu bilgileri analiz eder:</p>
+          <ul>
+            <li>Yaş</li>
+            <li>Cinsiyet</li>
+            <li>Vücut kitle indeksi (BMI)</li>
+            <li>Glikoz seviyesi</li>
+            <li>Kan basıncı</li>
+            <li>Diyabet geçmişi</li>
+            <li>Günlük fiziksel aktivite durumu</li>
+          </ul>
+          <p>Ve bu bilgilere göre kişiselleştirilmiş bir beslenme planı oluşturur.<br>Herkese aynı öneri değil, sana en uygun tavsiyeler!</p>
+        </div>
+      </div>
+
+      <!-- Sağ: Beslenme İlkeleri -->
+      <div class="col-md-4 beslenme-ilkeleri">
+        <h5 class="fw-bold">Genel Sağlıklı Beslenme İlkeleri</h5>
+        <ul class="ilkeler-listesi">
+          <li>
+            🥦 <strong>Bol Sebze ve Meyve Tüketin</strong><br>
+            Her ana öğünde tabaklarınızın yarısını sebzeler oluşturmalı.<br>
+            <em>Not: Şeker oranı düşük meyveler (çilek, böğürtlen, kivi) tercih edin.</em>
+          </li>
+          <li>
+            🌾 <strong>Tam Tahılları Tercih Edin</strong><br>
+            Beyaz ekmek yerine tam buğday, pirinç yerine bulgur tercih edin.
+          </li>
+          <li>
+            🫒 <strong>Sağlıklı Yağlara Yönelin</strong><br>
+            Zeytinyağı, ceviz, badem gibi doğal yağlar kullanın.
+          </li>
+          <li>
+            🍗 <strong>Yeterli Protein Alın</strong><br>
+            Derisiz tavuk, balık, yumurta, yoğurt gibi kaynakları tüketin.<br>
+            <em>Not: Haftada 2 kez balık yemeye özen gösterin.</em>
+          </li>
+          <li>
+            🚫 <strong>Şekerli ve İşlenmiş Gıdalardan Kaçının</strong><br>
+            Şekerli içecekler, fast food ve hazır paketleri sınırlandırın.
+          </li>
+          <li>
+            💧 <strong>Su İçmeyi İhmal Etmeyin</strong><br>
+            <em>Not: Günde en az 6–8 bardak su içmek metabolizmayı destekler.</em>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Alt Kartlar -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+
+          <!-- Yemek Planı -->
+          <div class="col-md-5">
+            <h5 class="fw-bold">Bugün için sana önerilen yemek planı</h5>
+            <table class="table table-bordered">
+              <thead>
+                <tr><th>ÖĞÜNLER</th><th>MENÜ ÖNERİSİ</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Kahvaltı</td><td id="kahvalti">{{ plan.kahvalti if plan else "-" }}</td></tr>
+                <tr><td>Ara Öğün</td><td id="ara1">{{ plan.ara1 if plan else "-" }}</td></tr>
+                <tr><td>Öğle Yemeği</td><td id="ogle">{{ plan.ogle if plan else "-" }}</td></tr>
+                <tr><td>Ara Öğün</td><td id="ara2">{{ plan.ara2 if plan else "-" }}</td></tr>
+                <tr><td>Akşam Yemeği</td><td id="aksam">{{ plan.aksam if plan else "-" }}</td></tr>
+                <tr><td>Gece Öğünü (İsteğe bağlı)</td><td id="gece">{{ plan.gece if plan else "-" }}</td></tr>
+              </tbody>
+            </table>
+            <button id="onerBtn" class="btn btn-orange mt-2">Günlük Beslenme Planı Öner</button>
+          </div>
+
+          <!-- Sağlıklı Yaşam İpuçları -->
+          <div class="col-md-4">
+            <h5 class="fw-bold">Sağlıklı Yaşam İpuçları</h5>
+            <ul class="ipuclari-listesi">
+              <li><strong>Küçük Değişikliklerle Başlayın:</strong><br>Her gün bir öğünde sağlıklı seçim yaparak başlayın.</li>
+              <li><strong>Porsiyon Kontrolü Yapın:</strong><br>Göz kararı yerine tabak ölçüsü kullanarak yemeğinizi dengeleyin.</li>
+              <li><strong>Yavaş ve Bilinçli Yiyin:</strong><br>Her lokmanın tadını çıkarın, acele etmeyin.</li>
+              <li><strong>Renkli Tabağınız Olsun:</strong><br>Sebze ve meyvelerde ne kadar çok renk olursa, o kadar çok vitamin alırsınız.</li>
+            </ul>
+          </div>
+
+          <!-- Motivasyon Cümlesi -->
+          <div class="col-md-3 d-flex align-items-center justify-content-center">
+            <h5 class="motivasyon-text text-center fw-bold">
+              Sağlıklı bir 
+              <br>
+              yaşam, doğru
+              <br>
+              beslenme
+              <br>
+              seçimleriyle
+              <br>
+              başlar! 
+              <br>
+              Yapay zeka
+              <br>
+              destekli
+              <br>
+              önerilerimizle
+              <br>
+              size en
+              <br>
+              uygun yolu
+              <br>
+              birlikte
+              <br>
+              buluyoruz.
+              <br>
+              Bugün
+              <br>
+              kendiniz için
+              <br>
+              küçük bir
+              <br>
+              adım atın,
+              <br>
+              yarın çok
+              <br>
+              daha güçlü
+              <br>
+              bir siz olun!
+            </h5>
+          </div>
+
+        <!-- Günlük Beslenme Takibi -->
+        <div class="takip-kutu mt-5 p-4">
+          <h5 class="fw-bold">Günlük Beslenme Takibi</h5>
+          <form id="notForm">
+            <textarea id="notAlani" class="form-control mb-3" rows="4" placeholder="Bugün ne yedin? Yazabilirsin...">{{ not_icerik }}</textarea>
+            <button type="submit" class="btn btn-orange">Kaydet</button>
+          </form>
+        </div>
+    </section>
+
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div id="flash-message" class="alert alert-{{ category }} text-center mt-3">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <!-- Bülten Aboneliği -->
+      <section class="py-5 text-center">
+        <div class="container">
+          <h3 class="mb-3 fw-bold">Haber bültenimize katıl</h3>
+          <form action="{{ url_for('abone') }}" method="POST" class="d-flex justify-content-center gap-2">
+            <input type="email" name="email" class="form-control w-50" placeholder="E-mail" required>
+            <button class="btn btn-orange">Bize abone ol</button>
+          </form>
+        </div>
+      </section>
+    
+      <!-- Alt Bilgi (Footer) -->
+      <footer class="bg-gradient-green text-white py-4">
+        <div class="container d-flex flex-column flex-lg-row justify-content-between">
+          <div>
+            <!-- Alt Logo Yer Tutucu -->
+               <!-- Logo ve yazı yan yana -->
+            <div class="d-flex align-items-center mb-2">
+                <div class="footer-logo me-2"></div> <!-- Logo -->
+                <span class="footer-brand-text">diabalysis</span> <!-- Yanındaki yazı -->
+            </div>
+            <p>Sağlıklı Beden, Mutlu Yaşam Erken Tespit Sağlıklı Gelecek</p>
+          </div>
+    
+          <div>
+            <h6>İletişim</h6>
+            <p><i class="fas fa-phone-alt me-2"></i>+90 546 525 8272</p>
+            <p><i class="fas fa-envelope me-2"></i>diabalysis@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt me-2"></i>Atatürk Caddesi No:123, Daire:5 Beşiktaş, İstanbul</p>
+          </div>
+          <div>
+            <h6>Harita</h6>
+            <div class="map"></div> <!-- Harita görseli buraya -->
+          </div>
+        </div>
+        
+        <!-- İletişim ile sosyal medya ikonları arasındaki çizgi -->
+        <hr class="footer-divider">
+    
+    
+        <!-- Sosyal medya ikonları PNG (ortalanmış) -->
+        <div class="text-center mt-4">
+            <img src="{{ url_for('static', filename='img/sosyalmedyaicons.png') }}" alt="Sosyal Medya İkonları" class="social-icons-img">
+        </div>
+        <!-- Telif hakkı -->
+        <div class="text-center mt-3 small">© 2023 diabalysis - Tüm Hakları Saklıdır</div>
+      </footer>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script>
+        // Flash mesajı 3 saniye sonra otomatik gizle
+        setTimeout(function() {
+          const msg = document.getElementById('flash-message');
+          if (msg) {
+            msg.style.transition = "opacity 0.5s ease";
+            msg.style.opacity = 0;
+            setTimeout(() => msg.remove(), 500);
+          }
+        }, 3000);
+      </script>
+
+      <script>
+        document.getElementById("onerBtn").addEventListener("click", async function () {
+          try {
+            const response = await fetch("/beslenme-oneri-generate", {
+              method: "POST"
+            });
+
+            const data = await response.json();
+
+            // Gelen JSON veriyi tabloya yazdır
+            document.getElementById("kahvalti").innerText = data.kahvalti;
+            document.getElementById("ara1").innerText = data.ara1;
+            document.getElementById("ogle").innerText = data.ogle;
+            document.getElementById("ara2").innerText = data.ara2;
+            document.getElementById("aksam").innerText = data.aksam;
+            document.getElementById("gece").innerText = data.gece;
+
+          } catch (error) {
+            console.error("Hata:", error);
+            alert("Öneri alınırken bir sorun oluştu.");
+          }
+        });
+      </script>
+
+    <script>
+      document.getElementById("notForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const notText = document.getElementById("notAlani").value;
+
+      const response = await fetch("/beslenme-notu-kaydet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ not: notText })
+      });
+
+      const result = await response.json();
+      alert(result.message);
+      });
+    </script>
+
+
+</body>
+</html>
+  

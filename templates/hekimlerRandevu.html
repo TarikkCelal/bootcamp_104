@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hekimler ve Randevu Takvimi - Diabalysis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/hekimlerRandevu.css') }}"> <!-- Hekimler ve Randevu Takvimi CSS dosyası -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar (Üst menü) -->
+  <nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container">
+      <!-- Logo Yer Tutucu -->
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <div class="logo me-2"></div> <!-- Buraya logo yerleştirilecek -->
+        <span class="fw-bold text-dark">diabalysis</span>
+      </a>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3">
+          <li class="nav-item"><a class="nav-link active" href="/">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkında</a></li>
+
+          {% if 'email' in session %}
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="/profil">
+                <img src="{{ url_for('static', filename=session.get('profil_foto', 'img/user.png')) }}" alt="Profil" class="navbar-avatar">
+              </a>
+            </li>
+          {% else %}
+            <!-- Giriş yapılmamışsa: giriş yap butonu göster -->
+            <li class="nav-item d-flex align-items-center">
+              <a class="btn btn-orange ms-2" href="/bize-katil">Giriş Yap</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Başlık ve Açıklama -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Hekimler ve Randevu Takvimi</h1>
+      <p class="text-muted">Alanında uzman doktorlarımızla birlikte sağlıklı bir yaşam için randevu alabilirsiniz.</p>
+    </div>
+  </section>
+
+  <!-- Randevu Formu ve Hekim Takvimi -->
+  <section class="py-5 bg-#f5f5f5">
+    <div class="container">
+      <div class="row">
+        <!-- Sol Kısım: Randevu Al -->
+        <div class="col-md-4 mb-4 text-center">
+          <div class="randevu-icon">
+            <img src="{{ url_for('static', filename='img/randevuCagriIkon.png') }}" alt="Randevu Ikonu" class="img-fluid" style="max-width: 80px;">
+          </div>
+          <br>
+          <h3>Randevu Al</h3>
+          <p>Alanında uzman doktorlarımızla beraber sağlıklı bir yaşam için randevu alabilirsiniz.</p>
+          <p><strong>İletişim:</strong> 0 374 264 20 10</p>
+        </div>
+
+        <!-- Orta Kısım: Takvim ve Doktorlar -->
+        <div class="col-md-4 mb-4">
+            <h5 class="fw-bold">Doktorlar:</h5>
+            <ul class="list-unstyled">
+              <li class="doctor-card" onclick="doktorSec('Prof. Dr. Esra Korucan')">
+                <div class="doctor-img">
+                  <!-- Doktor resmini sol tarafa ekliyoruz -->
+                  <img src="{{ url_for('static', filename='img/esraKorucan.png') }}" alt="Prof. Dr. Esra Korucan" class="img-fluid">
+                </div>
+                <div class="doctor-info">
+                  <span>Prof. Dr. Esra Korucan</span>
+                </div>
+              </li>
+              <li class="doctor-card" onclick="doktorSec('Uz. Dr. Sevil Korkmaz')">
+                <div class="doctor-img">
+                  <img src="{{ url_for('static', filename='img/sevilKorkmaz.png') }}" alt="Uz. Dr. Sevil Korkmaz" class="img-fluid">
+                </div>
+                <div class="doctor-info">
+                  <span>Uz. Dr. Sevil Korkmaz</span>
+                </div>
+              </li>
+              <li class="doctor-card" onclick="doktorSec('Dr. Yılmaz Tunç')">
+                <div class="doctor-img">
+                  <img src="{{ url_for('static', filename='img/yilmazTunc.png') }}" alt="Dr. Yılmaz Tunç" class="img-fluid">
+                </div>
+                <div class="doctor-info">
+                  <span>Dr. Yılmaz Tunç</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        <!-- Sağ Kısım: Randevu Formu -->
+        <div class="col-md-4 mb-4">
+            <h3 class="fw-bold">Randevu Al</h3>
+            <form onsubmit="return false;" id="randevuForm">
+              
+              <!-- Seçilen doktoru kullanıcıya göstermek için -->
+              <p id="secilenDoktorGoster" class="text-muted"></p>
+
+              <!-- Seçilen doktoru backend'e göndermek için -->
+              <input type="hidden" id="secilenDoktor" name="doktor">
+
+              <div class="mb-3">
+                <input type="text" class="form-control" id="tcKimlikNo" placeholder="TC Kimlik No">
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" id="adSoyad" placeholder="Ad Soyad">
+              </div>
+              <div class="mb-3">
+                <input type="tel" class="form-control" id="telefonNo" placeholder="Telefon No">
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" id="email" placeholder="email@example.com">
+              </div>
+              <div class="mb-3">
+                <input type="date" class="form-control" id="randevuTarihi" placeholder="Randevu Tarihi">
+              </div>
+              <div class="mb-3">
+                <input type="time" class="form-control" id="randevuSaati" placeholder="Randevu Saati">
+              </div>
+              <button type="submit" class="btn btn-orange w-auto">Randevu Al</button>
+            </form>
+          </div>
+  
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div id="flash-message" class="alert alert-info text-center mt-3">
+        {{ messages[0] }}
+      </div>
+    {% endif %}
+ {% endwith %}
+
+
+  <!-- Bülten Aboneliği -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h3 class="mb-3 fw-bold">Haber bültenimize katıl</h3>
+      <form action="{{ url_for('abone') }}" method="POST" class="d-flex justify-content-center gap-2"> <!--method="POST" → Flask'a veri göndereceğiz.action="/abone-ol" → Flask'ta tanımlayacağımız route adresi.name="email" → Bu input'tan gelen değeri Python'da request.form['email'] ile alacağız.-->
+          <input type="email" name="email" class="form-control w-50" placeholder="E-mail" required>
+          <button class="btn btn-orange">Bize abone ol</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Alt Bilgi (Footer) -->
+  <footer class="bg-gradient-green text-white py-4">
+    <div class="container d-flex flex-column flex-lg-row justify-content-between">
+      <div>
+        <!-- Alt Logo Yer Tutucu -->
+           <!-- Logo ve yazı yan yana -->
+        <div class="d-flex align-items-center mb-2">
+            <div class="footer-logo me-2"></div> <!-- Logo -->
+            <span class="footer-brand-text">diabalysis</span> <!-- Yanındaki yazı -->
+        </div>
+        <p>Sağlıklı Beden, Mutlu Yaşam Erken Tespit Sağlıklı Gelecek</p>
+      </div>
+
+      <div>
+        <h6>İletişim</h6>
+        <p><i class="fas fa-phone-alt me-2"></i>+90 546 525 8272</p>
+        <p><i class="fas fa-envelope me-2"></i>diabalysis@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt me-2"></i>Atatürk Caddesi No:123, Daire:5 Beşiktaş, İstanbul</p>
+      </div>
+      <div>
+        <h6>Harita</h6>
+        <div class="map"></div> <!-- Harita görseli buraya -->
+      </div>
+    </div>
+    
+    <!-- İletişim ile sosyal medya ikonları arasındaki çizgi -->
+    <hr class="footer-divider">
+
+
+    <!-- Sosyal medya ikonları PNG (ortalanmış) -->
+    <div class="text-center mt-4">
+        <img src="{{ url_for('static', filename='img/sosyalmedyaicons.png') }}" alt="Sosyal Medya İkonları" class="social-icons-img">
+    </div>
+    <!-- Telif hakkı -->
+    <div class="text-center mt-3 small">© 2023 diabalysis - Tüm Hakları Saklıdır</div>
+  </footer>
+
+<script>
+let secilenDoktor = "";
+
+function doktorSec(doktorAdi) {
+  secilenDoktor = doktorAdi;
+  document.getElementById("secilenDoktor").value = doktorAdi;
+
+  // Geri bildirim yazısı
+  document.getElementById("secilenDoktorGoster").textContent = doktorAdi + " seçildi.";
+
+  // Seçili kartı vurgula
+  document.querySelectorAll('.doctor-card').forEach(card => card.classList.remove('selected-doctor'));
+  event.currentTarget.classList.add('selected-doctor');
+}
+
+document.getElementById("randevuForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const formData = {
+    tc: document.getElementById("tcKimlikNo").value,
+    adsoyad: document.getElementById("adSoyad").value,
+    telefon: document.getElementById("telefonNo").value,
+    email: document.getElementById("email").value,
+    tarih: document.getElementById("randevuTarihi").value,
+    saat: document.getElementById("randevuSaati").value,
+    doktor: document.getElementById("secilenDoktor").value
+  };
+
+  if (!formData.doktor) {
+    alert("Lütfen bir doktor seçin!");
+    return;
+  }
+
+  const response = await fetch("/randevu_al", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData)
+  });
+
+  const result = await response.json();
+  alert(result.message);
+
+  if (response.ok) {
+    document.getElementById("randevuForm").reset();
+    document.getElementById("secilenDoktorGoster").textContent = "";
+    document.querySelectorAll('.doctor-card').forEach(card => card.classList.remove('selected-doctor'));
+  }
+});
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+</html>

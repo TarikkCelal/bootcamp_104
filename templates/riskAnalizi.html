@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diyabet Risk Analizi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/riskAnalizi.css') }}"> <!-- Dış CSS dosyası -->
+  <!-- Font Awesome (ikonlar için) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navbar (Üst menü) -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container">
+          <!-- Logo Yer Tutucu -->
+          <a class="navbar-brand d-flex align-items-center" href="/">
+            <div class="logo me-2"></div> <!-- Buraya logo yerleştirilecek -->
+            <span class="fw-bold text-dark">diabalysis</span>
+          </a>
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav me-3">
+              <li class="nav-item"><a class="nav-link" href="/">Ana Sayfa</a></li>
+              <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkında</a></li>
+              
+              {% if 'email' in session %}
+                <li class="nav-item d-flex align-items-center">
+                  <a class="nav-link" href="/profil">
+                    <img src="{{ url_for('static', filename=session.get('profil_foto', 'img/user.png')) }}" alt="Profil" class="navbar-avatar">
+                  </a>
+                </li>
+              {% else %}
+                <!-- Giriş yapılmamışsa: giriş yap butonu göster -->
+                <li class="nav-item d-flex align-items-center">
+                  <a class="btn btn-orange ms-2" href="/bize-katil">Giriş Yap</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Diyabet Risk Analizi Başlığı ve Açıklaması -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <h1 class="display-4 fw-bold">Diyabet Risk Analizi</h1>
+        <p class="text-muted">
+          Sistemimiz, kullanıcıdan alınan yaş, kilo, boy, aile öyküsü gibi temel sağlık bilgilerini değerlendirerek bilimsel yöntemlerle risk tahmini sunar. Bu risk seviyesi düşük, orta veya yüksek olarak sınıflandırılır ve kullanıcıya mevcut durumu hakkında anlaşılır ve yönlendirici bir geri bildirim sağlar.
+        </p>
+      </div>
+    </section>
+  
+    <!-- Diyabet Risk Analizi Formu -->
+    <section class="py-5">
+        <div class="container">
+          <form>
+            <div class="row g-3">
+              <!-- Cinsiyet -->
+              <div class="col-md-6">
+                <label for="cinsiyet" class="form-label">Cinsiyet</label>
+                <br>
+                <small class="form-text text-muted">
+                  Cinsiyet, bireyin diyabet duyarlılığı üzerinde etkisi olabilecek biyolojik cinsiyetini ifade eder.
+                </small>
+                <select id="cinsiyet" class="form-select">
+                  <option>Kadın</option>
+                  <option>Erkek</option>
+                </select>
+              </div>
+    
+              <!-- Yaş -->
+              <div class="col-md-6">
+                <label for="yas" class="form-label">Yaş</label>
+                <br>
+                <small class="form-text text-muted">
+                  Diyabetin yaşlı yetişkinlerde daha sık teşhis edilmesi nedeniyle yaş önemli bir faktördür.
+                </small>
+                <input type="number" id="yas" class="form-control" placeholder="25" required>
+              </div>
+    
+              <!-- Hipertansiyon -->
+              <div class="col-md-6">
+                <label for="hipertansiyon" class="form-label">Hipertansiyon</label>
+                <br>
+                <small class="form-text text-muted">
+                  Hipertansiyon, atardamarlardaki kan basıncının sürekli yüksek olduğu tıbbi bir durumdur.
+                </small>
+                <select id="hipertansiyon" class="form-select">
+                  <option>Var</option>
+                  <option>Yok</option>
+                </select>
+              </div>
+    
+              <!-- Kalp Hastalığı -->
+              <div class="col-md-6">
+                <label for="kalpHastaligi" class="form-label">Kalp Hastalığı</label>
+                <br>
+                <small class="form-text text-muted">
+                  Kalp hastalığı diyabet gelişimini artırmasıyla ilişkili olan başka bir tıbbi durumdur.
+                </small>
+                <select id="kalpHastaligi" class="form-select">
+                  <option>Var</option>
+                  <option>Yok</option>
+                </select>
+              </div>
+    
+              <!-- Sigara Geçmişi -->
+              <div class="col-md-6">
+                <label for="sigara" class="form-label">Sigara Geçmişi</label>
+                <br>
+                <small class="form-text text-muted">
+                  Sigara içme geçmişi, diyabet için bir risk faktörü olarak kabul edilir ve diyabette ilişkili komplikasyonları şiddetlendirebilir.
+                </small>
+                <select id="sigara" class="form-select" required>
+                  <option value="current">Şu anda içiyor</option>
+                  <option value="not current">Şu anda içmiyor</option>
+                  <option value="never">Hiç içmemiş</option>
+                  <option value="ever">İçmiş (belirsiz zaman)</option>
+                  <option value="No Info">Bilgi yok</option>
+                </select>
+              </div>
+    
+              <!-- Vücut Kitle İndeksi -->
+              <div class="col-md-6">
+                <label for="vki" class="form-label">Vücut Kitle İndeksi</label>
+                <br>
+                <small class="form-text text-muted">
+                  Vücut yağı, kilo ve boya göre ölçülmesidir. Daha yüksek BMI değerleri daha yüksek diyabet riskiyle bağlantılıdır.
+                </small>
+                <input type="number" id="vki" class="form-control" placeholder="30.5" required>
+              </div>
+    
+              <!-- Hemoglobin A1c Seviyesi -->
+              <div class="col-md-6">
+                <label for="hba1c" class="form-label">Hemoglobin A1c Seviyesi</label>
+                <br>
+                <small class="form-text text-muted">
+                  Kişinin son 2-3 ayındaki ortalama kan şekeri seviyesinin bir ölçüsüdür. Daha yüksek seviyeler diyabet geliştirme riskinin daha yüksek olduğunu gösterir.
+                </small>
+                <input type="number" id="hba1c" class="form-control" placeholder="7.1" required>
+              </div>
+    
+              <!-- Kan Glikoz Seviyesi -->
+              <div class="col-md-6">
+                <label for="kanGlikoz" class="form-label">Kan Glikoz Seviyesi</label>
+                <br>
+                <small class="form-text text-muted">
+                  Kan glikoz seviyesi, belirli zamanlarda kan dolaşımındaki glikoz miktarını ifade eder.
+                    Normalden yüksek seviyeler diyabet riskini artırabilir.
+                </small>
+                <input type="number" id="kanGlikoz" class="form-control" placeholder="170" required>
+              </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <div class="col-3 text-center mt-1">
+        <button type="submit" class="btn btn-orange analiz">Analizi Başlat</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    
+    <!-- Diyabet Risk Analizi Sonuç Kartı ve Randevu Al -->
+    <section class="py-5">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- Diyabet Risk Analizi Sonucu Kartı -->
+            <div class="col-md-6 mb-4">
+              <div class="card result-card p-4">
+                <h2 class="fw-bold">Diyabet Risk Analizi Sonucunuz:</h2>
+                <h4 class="fw-bold risk-output">Risk Yüzdesi: </h4>
+                <p class="mt-3">Risk seviyesi %70 ve üzeri: <strong>Yüksek Risk</strong></p>
+                <p>%30 ve %70 arası: <strong>Risk</strong></p>
+                <p>%30 ve altı: <strong>Düşük Risk</strong></p>
+              </div>
+            </div>
+      
+            <!-- Randevu Al -->
+            <div class="col-md-6">
+              <div class="randevu-al">
+                <img src="{{ url_for('static', filename='img/randevuCagriIkon.png') }}" alt="Randevu Ikon" class="img-fluid mb-3">
+                <h3>Randevu Al</h3>
+                <p>Alanında uzman doktorlarımızla beraber sağlıklı bir yaşam için randevu alabilirsiniz.</p>
+                <h3><p><strong>İletişim:</strong> 0 374 264 20 10</p></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-info" role="alert">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Bülten Aboneliği -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <h3 class="mb-3 fw-bold">Haber bültenimize katıl</h3>
+        <form action="{{ url_for('abone') }}" method="POST" class="d-flex justify-content-center gap-2">
+          <input type="email" name="email" class="form-control w-50" placeholder="E-mail" required>
+          <button class="btn btn-orange">Bize abone ol</button>
+        </form>
+      </div>
+    </section>
+    
+      <!-- Alt Bilgi (Footer) -->
+      <footer class="bg-gradient-green text-white py-4">
+        <div class="container d-flex flex-column flex-lg-row justify-content-between">
+          <div>
+            <!-- Alt Logo Yer Tutucu -->
+               <!-- Logo ve yazı yan yana -->
+            <div class="d-flex align-items-center mb-2">
+                <div class="footer-logo me-2"></div> <!-- Logo -->
+                <span class="footer-brand-text">diabalysis</span> <!-- Yanındaki yazı -->
+            </div>
+            <p>Sağlıklı Beden, Mutlu Yaşam Erken Tespit Sağlıklı Gelecek</p>
+          </div>
+    
+          <div>
+            <h6>İletişim</h6>
+            <p><i class="fas fa-phone-alt me-2"></i>+90 546 525 8272</p>
+            <p><i class="fas fa-envelope me-2"></i>diabalysis@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt me-2"></i>Atatürk Caddesi No:123, Daire:5 Beşiktaş, İstanbul</p>
+          </div>
+          <div>
+            <h6>Harita</h6>
+            <div class="map"></div> <!-- Harita görseli buraya -->
+          </div>
+        </div>
+        
+        <!-- İletişim ile sosyal medya ikonları arasındaki çizgi -->
+        <hr class="footer-divider">
+    
+    
+        <!-- Sosyal medya ikonları PNG (ortalanmış) -->
+        <div class="text-center mt-4">
+            <img src="{{ url_for('static', filename='img/sosyalmedyaicons.png') }}" alt="Sosyal Medya İkonları" class="img-fluid mb-3">
+        </div>
+        <!-- Telif hakkı -->
+        <div class="text-center mt-3 small">© 2023 diabalysis - Tüm Hakları Saklıdır</div>
+      </footer>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      
+      
+      <script>
+        console.log("🟢 JavaScript aktif!");
+
+        document.querySelector(".analiz").addEventListener("click", async function (e) {
+          e.preventDefault();
+          const button = document.querySelector(".analiz");
+          const form = document.querySelector("form");
+          const riskText = document.querySelector(".risk-output");
+          button.innerText = "Analiz Ediliyor...";
+          console.log("🟠 Butona tıklandı!");
+
+          const yas = document.querySelector("#yas").value;
+          const vki = document.querySelector("#vki").value;
+          const hba1c = document.querySelector("#hba1c").value;
+          const kanGlikoz = document.querySelector("#kanGlikoz").value;
+          const cinsiyet = document.querySelector("#cinsiyet").value;
+          const sigara = document.querySelector("#sigara").value;
+          const hipertansiyon = document.querySelector("#hipertansiyon").value;
+          const kalpHastaligi = document.querySelector("#kalpHastaligi").value;
+
+          try {
+            const response = await fetch("/predict", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              yas,
+              vki,
+              hba1c,
+              kanGlikoz,
+              cinsiyet,
+              sigara,
+              hipertansiyon,
+              kalpHastaligi,
+            }),
+          });
+
+          const result = await response.json();
+          console.log("📥 Backend'den gelen:", result);
+
+          if (result.risk !== undefined) {
+            const risk = Number(result.risk).toFixed(2);
+            riskText.innerText = "Risk Yüzdesi: %" + risk;
+
+            if (risk >= 70) {
+              riskText.style.color = "red";
+            } else if (risk >= 30) {
+              riskText.style.color = "orange";
+            } else {
+              riskText.style.color = "green";
+            }
+
+            form.reset(); // Formu temizle
+            button.innerText = "Analizi Başlat"; // Buton metnini geri al
+          } else {
+            document.querySelector(".result-card h4").innerText =
+              "Tahmin alınamadı 😢 Hata: " + (result.error || "Bilinmeyen hata");
+            button.innerText = "Analizi Başlat"; // Buton metnini geri al
+            }
+
+          }
+          catch (error) {
+          console.error("❌ AJAX hatası:", error);
+          document.querySelector(".result-card h4").innerText =
+            "Sunucuya ulaşılamadı 💥";
+          }
+        });
+</script>
+
+
+      
+</body>
+</html> 

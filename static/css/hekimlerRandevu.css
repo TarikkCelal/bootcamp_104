@@ -1,0 +1,196 @@
+/* Genel yazı tipi ve arka plan */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+  }
+
+  /* Navbar */
+nav {
+  background-color: #f5f5f5; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: black; /* Navbar'daki yazıları beyaz yapıyoruz */
+}
+
+.navbar-nav .nav-link.active {
+  color: #f3704d; /* Aktif sayfa için turuncu renk */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f3704d;
+}
+  
+/* Logo stili */
+.logo {
+  width: 40px; /* Daha büyük boyut */
+  height: 40px; /* Daha büyük boyut */
+  background-image: url('img/diabalysisLogoKoyu.png');
+  background-size: contain; /* Arka plan resmi kutuya sığacak şekilde küçülür */
+  background-repeat: no-repeat; /* Arka planın tekrarlanmaması için */
+  background-position: center; /* Resmi ortalar */
+}
+
+  /* Turuncu buton */
+.btn-orange {
+    background-color: #f3704d;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border: none;
+  }
+  
+.btn-orange:hover {
+    background-color: #d85535;
+    color: white;
+  }
+
+
+/* Randevu Takvimi */
+.randevu-item {
+    background: #f0f8ff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .randevu-item p {
+    margin: 0.5rem 0;
+  }
+  
+  .randevu-doctor p {
+    margin: 0.2rem 0;
+  }
+  
+  /* Form kutuları */
+  input.form-control {
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+/* Doktor Kartları */
+.doctor-card {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .doctor-img {
+    margin-right: 15px;
+  }
+  
+  .doctor-info {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* İsimleri dikeyde ortalar */
+    height: 50px;  /* Kartın boyunun ortasında kalması için */
+  }
+  
+  /* Doktor Resmi */
+  .doctor-img img {
+    width: 100px;    /* Resim genişliğini arttırdık */
+    height: 100px;   /* Yüksekliği dikdörtgen yapmak için */
+    object-fit: contain;  /* Fotoğrafı kırpmadan sığdırıyoruz */
+    border-radius: 8px;   /* Keskin köşeler için */
+  }
+
+  .selected-doctor { /* Seçilen doktor kartı */
+  border: 2px solid #f3704d;
+  box-shadow: 0 0 10px rgba(243, 112, 77, 0.4);
+}
+
+  
+
+  /* Footer arka planı */
+.bg-gradient-green {
+  background: linear-gradient(to right, #007D6E, #5EB47C);
+  }
+  
+  /* Footer logosu */
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    background-image: url('img/footerAcikRenkLogo.png'); /* Buraya footer logosunun yolu */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Footer marka yazısı */
+.footer-brand-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white; /* Beyaz renk */
+  }
+  
+
+  /* Harita görseli */
+  .map {
+    background-image: url('img/harita.png'); /* Harita PNG */
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 100px;
+  }
+  
+  /* Kart metni */
+  .feature-card p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .footer-divider { /* İletişim ile sosyal medya ikonları arasındaki çizgi*/
+    border: none; 
+    height: 1px;  
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .social-icons-img {
+    max-width: 200px; /* İkon PNG toplam genişliği */
+    height: auto;
+    filter: brightness(1.1); /* Hafif parlaklık efekti */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+  
+  .social-icons-img:hover {
+    opacity: 1;
+  }
+
+  footer i {
+    color: white;  /* İletişim kısmındaki ikonlar için */
+    min-width: 20px;
+  }
+
+  /* Formları Stilize Etme footer abone ol*/
+  form .form-label {
+    font-weight: 600;
+  }
+  
+  form .form-control {
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}

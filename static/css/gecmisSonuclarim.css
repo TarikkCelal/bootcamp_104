@@ -1,0 +1,215 @@
+/* Genel yazı tipi ve arka plan */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+  }
+
+  /* Navbar */
+nav {
+  background: linear-gradient(to right, #007D6E, #5EB47C); /* Aynı renk geçişi footer ile */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: white; /* Navbar'daki yazıları beyaz yapıyoruz */
+}
+
+.navbar-nav .nav-link.active {
+  color: black; /* Aktif sayfa için turuncu renk */
+}
+
+.navbar-nav .nav-link:hover {
+  color: black;
+}
+  
+/* Logo stili */
+.logo {
+  width: 40px; /* Daha büyük boyut */
+  height: 40px; /* Daha büyük boyut */
+  background-image: url('/static/img/footerAcikRenkLogo.png');
+  background-size: contain; /* Arka plan resmi kutuya sığacak şekilde küçülür */
+  background-repeat: no-repeat; /* Arka planın tekrarlanmaması için */
+  background-position: center; /* Resmi ortalar */
+}
+
+
+/* Turuncu buton */
+.btn-orange {
+    background-color: #f3704d;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border: none;
+  }
+  
+.btn-orange:hover {
+    background-color: #d85535;
+    color: white;
+  }
+
+/* Sonuçlarım Başlığı Stilini Değiştirme */
+h1 {
+    font-family: 'Manrope', sans-serif;  /* Font stilini değiştir */
+    font-size: 3rem;  /* Font büyüklüğünü artır */
+    font-weight: 300;  /* Font kalınlığını artır */
+    color: black;  /* Yazı rengini değiştir */
+    margin-bottom: 15px;  /* Başlık ile altındaki bölüm arasında mesafe */
+}
+
+
+/* Sonuç Kartı */
+.card {
+    background: linear-gradient(to right, #007D6E, #5EB47C); /* Aynı renk geçişi footer ile */
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 310px;
+}
+
+.card h5 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* İkon Placeholder */
+.icon-placeholder {
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.icon-img-generic { /* Genel ikon boyutu */
+  width: 90px;
+  height: 90px;
+}
+
+
+
+.custom-risk-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.custom-risk-icon:hover {
+  transform: scale(1.05);
+}
+
+.low-risk {
+  background: radial-gradient(circle, #55fcb4 40%, #3cba92 100%);
+}
+
+.medium-risk {
+  background: radial-gradient(circle, #f3704d 40%, #f59f3d 100%);
+}
+
+.high-risk {
+  background: radial-gradient(circle, #d31027 40%, #ea384d 100%);
+}
+
+
+
+/* Footer arka planı */
+.bg-gradient-green {
+    background: linear-gradient(to right, #007D6E, #5EB47C); /* Aynı renk geçişi footer ile */
+  }
+  
+  /* Footer logosu */
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    background-image: url('/static/img/footerAcikRenkLogo.png'); /* Buraya footer logosunun yolu */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Footer marka yazısı */
+.footer-brand-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white; /* Beyaz renk */
+  }
+  
+
+  /* Harita görseli */
+  .map {
+    background-image: url('/static/img/harita.png'); /* Harita PNG */
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 100px;
+  }
+  
+  /* Kart metni */
+  .feature-card p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .footer-divider { /* İletişim ile sosyal medya ikonları arasındaki çizgi*/
+    border: none; 
+    height: 1px;  
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .social-icons-img {
+    max-width: 200px; /* İkon PNG toplam genişliği */
+    height: auto;
+    filter: brightness(1.1); /* Hafif parlaklık efekti */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+  
+  .social-icons-img:hover {
+    opacity: 1;
+  }
+
+  footer i {
+    color: white;  /* İletişim kısmındaki ikonlar için */
+    min-width: 20px;
+  }
+
+  /* Formları Stilize Etme footer abone ol*/
+  form .form-label {
+    font-weight: 600;
+  }
+  
+  form .form-control {
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+  

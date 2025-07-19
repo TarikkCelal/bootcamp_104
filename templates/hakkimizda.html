@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diabalysis - Hakkımızda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/hakkimizda.css') }}"> <!-- Hakkımızda CSS dosyası -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar (Üst menü) -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+      <div class="container">
+        <!-- Logo Yer Tutucu -->
+        <a class="navbar-brand d-flex align-items-center" href="/"> <!-- Ana sayfaya yönlendirilecek bağlantı -->
+          <div class="logo me-2"></div> <!-- Buraya logo yerleştirilecek -->
+          <span class="fw-bold text-dark">diabalysis</span>
+        </a>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav me-3">
+            <li class="nav-item"><a class="nav-link" href="/">Ana Sayfa</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/hakkimizda">Hakkında</a></li>
+            
+            {% if 'email' in session %}
+              <li class="nav-item d-flex align-items-center">
+                <a class="nav-link" href="/profil">
+                  <img src="{{ url_for('static', filename=session.get('profil_foto', 'img/user.png')) }}" alt="Profil" class="navbar-avatar">
+                </a>
+              </li>
+            {% else %}
+              <!-- Giriş yapılmamışsa: giriş yap butonu göster -->
+              <li class="nav-item d-flex align-items-center">
+                <a class="btn btn-orange ms-2" href="/bize-katil">Giriş Yap</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hakkımızda Başlık ve Açıklama -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="{{ url_for('static', filename='img/hakkimizdafoto.png') }}" alt="Hakkımızda" class="img-fluid hakkimizda-img"> <!-- Buraya uygun görsel ekleyin -->
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold">Sağlıklı Beden, Mutlu Yaşam, Erken Tespit, Sağlıklı Gelecek</h1>
+                    <p class="mt-3 text-muted">
+                        Yapay Zeka Destekli Web Tabanlı Diyabet Riski Tahmin Sistemi, bireylerin diyabet hastalığına yakalanma riskini erken dönemde değerlendirebilmelerini sağlamak amacıyla geliştirilmiş yenilikçi bir sağlık teknolojisi çözümüdür. Projemiz, günümüzün en yaygın kronik hastalıklarından biri olan diyabetle mücadelede erken teşhis ve önleyici sağlık hizmetlerinin önemini göz önünde bulundurarak tasarlanmıştır.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+      <!-- Hakkımızda Detaylı Metin -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="fw-bold">Amacımız</h2>
+          <p>
+            Toplumda giderek artan diyabet oranlarına karşı farkındalık yaratmak ve bireylerin kendi sağlıkları üzerinde daha fazla kontrol sahibi olabilmelerini sağlamak temel hedefimizdir.    Geliştirdiğimiz sistem    sayesinde kullanıcılar, basit ve kullanıcı  dostu bir arayüz üzerinden   sağlık verilerini  girerek, kişiselleştirilmiş bir diyabet risk analizine ulaşabilirler. Böylece olası bir diyabet gelişimi öncesinde bilinçli adımlar atabilirler.
+          </p>
+          <br>
+          <h2 class="fw-bold mt-4">Nasıl Yardımcı Oluruz?</h2>
+          <p>
+            Sistemimiz, kullanıcıdan alınan yaş, kilo, boy, aile öyküsü gibi temel sağlık bilgilerini değerlendirerek bilimsel yöntemlerle risk tahmini sunar. Bu risk seviyesi düşük, orta veya yüksek olarak sınıflandırılır ve kullanıcıya, mevcut durumu hakkında anlaşılır ve yönlendirici bir geri bildirim sağlanır.
+          </p>
+          <br>
+          <p>
+            Ayrıca analiz sonucuna göre sunulan öneriler, sağlıklı bir yaşam tarzı benimsenmesine katkıda bulunmayı hedefler. Kullanıcılara beslenme alışkanlıkları, fiziksel aktivite düzeyi ve genel yaşam kalitesini artırmaya yönelik kişiselleştirilmiş öneriler sunulur.
+          </p>
+          <br>
+          <h2 class="fw-bold mt-4">Vizyonumuz</h2>
+          <p>
+            Bireylerin sağlık bilincini artıran, erken teşhis imkânı sunan ve toplumsal sağlık farkındalığını güçlendiren dijital çözümler geliştirmek.
+          </p>
+          <br>
+          <h2 class="fw-bold mt-4">Misyonumuz</h2>
+          <p>
+            Diyabet gibi kronik hastalıklarla mücadelede teknolojiyi etkin kullanarak, bireylerin kendi sağlık verilerini takip edebilecekleri ve risklerini bilimsel temellere dayalı olarak analiz edebilecekleri güvenilir bir platform sunmak.
+          </p>
+          <br>
+          <h2 class="fw-bold mt-4">Güvenilirlik ve Gizlilik</h2>
+          <p>
+            Sistemimizde kullanıcı mahremiyeti ve veri güvenliği en yüksek önceliğe sahiptir. Paylaşılan tüm veriler yalnızca analiz amaçlı kullanılır, üçüncü taraflarla paylaşılmaz ve güvenli ortamlarda saklanır. Kullanıcılarımızın bize duyduğu güven, projemizin temel taşlarından biridir.
+          </p>
+          <br>
+          <p>
+            Yapay Zeka Destekli Diyabet Riski Tahmin Sistemi ile bireylerin kendi sağlık yolculuklarında daha bilinçli kararlar almasını sağlamak ve toplumsal farkındalığı artırmak için çalışıyoruz. Sağlık, sadece tedaviyle değil, bilinçli önlemlerle de başlar. Biz de bu bilinçle, daha sağlıklı bir toplum için dijital çözümler üretmeye devam ediyoruz.
+          </p>
+          <br>
+          <h2 class="fw-bold mt-4">Sunduğumuz Hizmetler / Neler Sunuyoruz?</h2>
+          <ul>
+            <li>Diyabet risk analizi (düşük, orta, yüksek seviye)</li>
+            <li>Sağlık verisi girişi ve değerlendirme</li>
+            <li>Kişiselleştirilmiş sağlık ve yaşam önerileri</li>
+            <li>Kullanıcı dostu arayüz</li>
+            <li>Gizlilik ve veri güvenliği garantisi</li>
+          </ul>
+          <br>
+          <h2 class="fw-bold mt-4">Sıkça Sorulan Sorular (SSS)</h2>
+          <ul>
+            <li>Diyabet riski nasıl hesaplanıyor?</li>
+            <li>Girdiğiniz sağlık verileri, geçmiş verilerle eğitilmiş yapay zeka modelleriyle analiz edilerek risk seviyeniz hesaplanır.</li>
+          </ul>
+          <br>
+          <h2 class="fw-bold mt-4">Verilerim güvende mi?</h2>
+          <p>
+            Evet. Girdiğiniz tüm veriler yalnızca analiz amacıyla kullanılır ve üçüncü şahıslarla paylaşılmaz.
+          </p>
+          <br>
+          <h2 class="fw-bold mt-4">Bu sistem doktor tavsiyesi yerine geçer mi?</h2>
+          <p>
+            Hayır. Sistemimiz tıbbi teşhis koymaz, sadece ön bilgi ve yönlendirme sunar. Kesin tanı ve tedavi için doktorunuza danışmanız gereklidir.
+          </p>
+        </div>
+      </section>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div id="flash-message" class="alert alert-{{ category }} text-center mt-3">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+
+      <!-- Bülten Aboneliği -->
+      <section class="py-5 text-center">
+        <div class="container">
+          <h3 class="mb-3 fw-bold">Haber bültenimize katıl</h3>
+          <form action="{{ url_for('abone') }}" method="POST" class="d-flex justify-content-center gap-2">
+            <input type="email" name="email" class="form-control w-50" placeholder="E-mail" required>
+            <button class="btn btn-orange">Bize abone ol</button>
+          </form>
+        </div>
+      </section>
+    
+      <!-- Alt Bilgi (Footer) -->
+      <footer class="bg-gradient-green text-white py-4">
+        <div class="container d-flex flex-column flex-lg-row justify-content-between">
+          <div>
+            <!-- Alt Logo Yer Tutucu -->
+               <!-- Logo ve yazı yan yana -->
+            <div class="d-flex align-items-center mb-2">
+                <div class="footer-logo me-2"></div> <!-- Logo -->
+                <span class="footer-brand-text">diabalysis</span> <!-- Yanındaki yazı -->
+            </div>
+            <p>Sağlıklı Beden, Mutlu Yaşam Erken Tespit Sağlıklı Gelecek</p>
+          </div>
+    
+          <div>
+            <h6>İletişim</h6>
+            <p><i class="fas fa-phone-alt me-2"></i>+90 546 525 8272</p>
+            <p><i class="fas fa-envelope me-2"></i>diabalysis@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt me-2"></i>Atatürk Caddesi No:123, Daire:5 Beşiktaş, İstanbul</p>
+          </div>
+          <div>
+            <h6>Harita</h6>
+            <div class="map"></div> <!-- Harita görseli buraya -->
+          </div>
+        </div>
+        
+        <!-- İletişim ile sosyal medya ikonları arasındaki çizgi -->
+        <hr class="footer-divider">
+    
+    
+        <!-- Sosyal medya ikonları PNG (ortalanmış) -->
+        <div class="text-center mt-4">
+            <img src="{{ url_for('static', filename='img/sosyalmedyaicons.png') }}" alt="Sosyal Medya İkonları" class="social-icons-img">
+        </div>
+        <!-- Telif hakkı -->
+        <div class="text-center mt-3 small">© 2023 diabalysis - Tüm Hakları Saklıdır</div>
+      </footer>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script>
+        // Flash mesajı 3 saniye sonra otomatik gizle
+        setTimeout(function() {
+          const msg = document.getElementById('flash-message');
+          if (msg) {
+            msg.style.transition = "opacity 0.5s ease";
+            msg.style.opacity = 0;
+            setTimeout(() => msg.remove(), 500);
+          }
+        }, 3000);
+      </script>
+
+
+
+
+</body>
+</html>

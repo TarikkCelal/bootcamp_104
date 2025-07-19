@@ -1,0 +1,210 @@
+/* Genel yazı tipi ve arka plan */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+  }
+
+  /* Navbar */
+nav {
+  background-color: #f5f5f5; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: black; /* Navbar'daki yazıları beyaz yapıyoruz */
+}
+
+.navbar-nav .nav-link.active {
+  color: #f3704d; /* Aktif sayfa için turuncu renk */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f3704d;
+}
+
+  
+/* Logo stili */
+.logo {
+  width: 40px; /* Daha büyük boyut */
+  height: 40px; /* Daha büyük boyut */
+  background-image: url('/static/img/diabalysisLogoKoyu.png');
+  background-size: contain; /* Arka plan resmi kutuya sığacak şekilde küçülür */
+  background-repeat: no-repeat; /* Arka planın tekrarlanmaması için */
+  background-position: center; /* Resmi ortalar */
+}
+
+
+  /* Turuncu vurgulu metin */
+  .text-orange {
+    color: #f3704d;
+  }
+  
+  /* Turuncu buton */
+  .btn-orange {
+    background-color: #f3704d;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border: none;
+  }
+  
+  .btn-orange:hover {
+    background-color: #d85535;
+    color: white;
+  }
+
+
+
+  /* Başlık */
+.display-4 {
+    font-weight: 600;
+    color: #333;
+  }
+
+
+
+/* İçerik alanı */
+.custom-list {
+  padding-left: 18px;
+}
+
+.custom-list li {
+  margin-bottom: 8px;
+}
+
+
+.kutu-baslik {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.egzersiz-bolum {
+  margin-top: 20px;
+}
+
+.egzersiz-bolum strong {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.egzersiz-bolum p {
+  margin-bottom: 8px;
+}
+
+.egzersiz-bolum ul {
+  padding-left: 18px;
+  margin-bottom: 0;
+}
+
+.egzersiz-bolum li {
+  margin-bottom: 6px;
+}
+
+
+.takip-kutusu {
+  background: linear-gradient(to right, #e0f4e0, #f0fff0);
+  border-radius: 12px;
+  resize: vertical;
+  margin-top: -200px;
+}
+
+.motivasyon-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-weight: 500;
+  color: #222;
+  max-width: 240px;
+  margin-top: -120px;
+}
+
+.takip-kutu {
+  background: linear-gradient(to right, #d5f2de, #e6f6e9);
+  border-radius: 8px;
+  border-left: 4px solid #50c1a3;
+}
+
+.takip-cizgi {
+  height: 1.5px;
+  background-color: #a6d8b7;
+  margin: 1.5rem 0;
+}
+
+   /* Footer arka planı */
+  .bg-gradient-green {
+    background: linear-gradient(to right, #007D6E, #5EB47C);
+  }
+  
+  /* Footer logosu */
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    background-image: url('/static/img/footerAcikRenkLogo.png'); /* Buraya footer logosunun yolu */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Footer marka yazısı */
+.footer-brand-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white; /* Beyaz renk */
+  }
+  
+
+  /* Harita görseli */
+  .map {
+    background-image: url('/static/img/harita.png'); /* Harita PNG */
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 100px;
+  }
+  
+  /* Kart metni */
+  .feature-card p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .footer-divider { /* İletişim ile sosyal medya ikonları arasındaki çizgi*/
+    border: none; 
+    height: 1px;  
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .social-icons-img {
+    max-width: 200px; /* İkon PNG toplam genişliği */
+    height: auto;
+    filter: brightness(1.1); /* Hafif parlaklık efekti */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+  
+  .social-icons-img:hover {
+    opacity: 1;
+  }
+
+  footer i {
+    color: white;  /* İletişim kısmındaki ikonlar için */
+    min-width: 20px;
+  }
+
+  .navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}

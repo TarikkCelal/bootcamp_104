@@ -1,0 +1,296 @@
+/* Genel yazı tipi ve arka plan */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+  }
+
+  /* Navbar */
+nav {
+  background: linear-gradient(to right, #007D6E, #5EB47C); /* Aynı renk geçişi footer ile */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: white; /* Navbar'daki yazıları beyaz yapıyoruz */
+}
+
+.navbar-nav .nav-link.active {
+  color: black; /* Aktif sayfa için turuncu renk */
+}
+
+.navbar-nav .nav-link:hover {
+  color: black;
+}
+
+  
+  
+  /* Logo stili */
+.logo {
+  width: 40px; /* Daha büyük boyut */
+  height: 40px; /* Daha büyük boyut */
+  background-image: url('/static/img/footerAcikRenkLogo.png');
+  background-size: contain; /* Arka plan resmi kutuya sığacak şekilde küçülür */
+  background-repeat: no-repeat; /* Arka planın tekrarlanmaması için */
+  background-position: center; /* Resmi ortalar */
+}
+
+  
+  /* Turuncu buton */
+.btn-orange {
+  background-color: #f3704d;
+  color: white;
+  border-radius: 20px;
+  padding: 0.5rem 1.5rem;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: #d85535;
+  color: white;
+}
+
+ /* Profil Sayfası için özel stiller */
+.profile-container {
+  margin-top: 50px;
+}
+
+.personal-info-container {
+  background-color: #f5f5f5; /* Kişisel Bilgiler arka plan rengi */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.result-container {
+  width: 100%; /* Ekstra daraltma yapılmışsa bunu temizler */
+  background-color: #f5f5f5; /* Geçmiş Analiz Sonuçları ve Geçmiş Randevular arka plan rengi */
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 300px;  /* Her container'ın minimum yüksekliğini belirliyoruz */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* İçeriği dikey olarak hizalamak */
+}
+
+.card-body ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card-body ul li {
+  margin-bottom: 10px;
+}
+
+.profile-image-full {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card.h-100 {
+  height: 100%;
+}
+
+.profile-image-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0; /* Dairesellik yok */
+}
+
+.profile-image img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ccc;
+  background-color: white;
+}
+
+.profile-image-clickable {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+  transition: 0.3s ease;
+}
+
+.profile-image-clickable:hover {
+  opacity: 0.8;
+  filter: brightness(0.95);
+}
+
+.navigation {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between; /* Butonları başa ve sona hizala */
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end; /* Sonraki butonunu sağa hizalamak için */
+}
+
+.btn-text {
+  font-size: 16px;
+  color: black; 
+  cursor: pointer;
+}
+
+.btn-text:hover {
+  color: #6c757d;
+}
+
+.btn-text.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+
+.card {
+  margin-bottom: 20px;
+  height: 100%;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #E5E5E5; /* Card'ların içi gri */
+}
+
+/* Geçmiş Analiz Sonuçları ve Randevular için kutu düzeni */
+.result-box {
+  margin-top: 20px;
+}
+
+.result-item {
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff; /* Kutu rengi beyaz */
+}
+
+.result-item .result-label {
+  font-size: 16px;
+  color: #333; /* Metin rengi siyah */
+}
+
+
+/* Flexbox kullanarak eşit yükseklik sağlıyoruz */
+.row {
+  display: flex;
+  justify-content: space-between; /* Container'lar arasındaki boşluğu eşitler */
+}
+
+
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Yükseklikleri eşit tutmak için */
+  flex: 1;  /* Eşit büyüklükte olmalarını sağlamak için */
+}
+
+.card.h-100 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Yüksekliği %100 yapıyoruz */
+}
+
+
+
+  
+  /* Footer arka planı */
+  .bg-gradient-green {
+    background: linear-gradient(to right, #007D6E, #5EB47C);
+  }
+  
+  /* Footer logosu */
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    background-image: url('/static/img/footerAcikRenkLogo.png'); /* Buraya footer logosunun yolu */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Footer marka yazısı */
+.footer-brand-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white; /* Beyaz renk */
+  }
+  
+
+  /* Harita görseli */
+  .map {
+    background-image: url('/static/img/harita.png'); /* Harita PNG */
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 100px;
+  }
+  
+  /* Kart metni */
+  .feature-card p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .footer-divider { /* İletişim ile sosyal medya ikonları arasındaki çizgi*/
+    border: none; 
+    height: 1px;  
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .social-icons-img {
+    max-width: 200px; /* İkon PNG toplam genişliği */
+    height: auto;
+    filter: brightness(1.1); /* Hafif parlaklık efekti */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+  
+  .social-icons-img:hover {
+    opacity: 1;
+  }
+
+  footer i {
+    color: white;  /* İletişim kısmındaki ikonlar için */
+    min-width: 20px;
+  }
+
+  /* 🔶 Sadece metin gösterimi için kutu görünümü */
+.styled-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+  

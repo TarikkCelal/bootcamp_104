@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diabalysis - Egzersiz Önerisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/egzersizOnerisi.css') }}"> <!-- Egzersiz Önerisi CSS dosyası -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar (Üst menü) -->
+<nav class="navbar navbar-expand-lg shadow-sm">
+  <div class="container">
+    <!-- Logo Yer Tutucu -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <div class="logo me-2"></div> <!-- Buraya logo yerleştirilecek -->
+      <span class="fw-bold text-dark">diabalysis</span>
+    </a>
+
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav me-3">
+        <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Ana Sayfa</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path == '/hakkimizda' %}active{% endif %}" href="/hakkimizda">Hakkında</a></li>
+
+        {% if 'email' in session %}
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="/profil">
+              <img src="{{ url_for('static', filename=session.get('profil_foto', 'img/user.png')) }}" alt="Profil" class="navbar-avatar">
+            </a>
+          </li>
+        {% else %}
+          <!-- Giriş yapılmamışsa: giriş yap butonu göster -->
+          <li class="nav-item d-flex align-items-center">
+            <a class="btn btn-orange ms-2" href="/bize-katil">Giriş Yap</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Başlık -->
+    <section class="py-5">
+      <div class="container">
+        <h4 class="display-4 fw-bold">Egzersiz</h4>
+      </div>
+    </section>
+
+
+<div class="container egzersiz-wrapper py-5">
+  <div class="row align-items-start">
+      <div class="col-md-4">
+        <h4 class="fw-bold">Sağlıklı bir gelecek için hareket zamanı!</h4>
+        <p>Egzersiz, diyabet riskinizi azaltmanın ve kan şekeri dengenizi korumanın en güçlü yollarından biridir. Yapay zeka destekli sistemimiz, yaşınıza, kilonuza ve sağlık bilgileriniz doğrultusunda size özel egzersiz önerileri sunuyor. Şimdi, hem bedeninizi hem de ruhunuzu güçlendirecek adımları birlikte atalım!</p>
+        <img src="{{ url_for('static', filename='img/egzersiz1.png') }}" class="img-fluid rounded mb-3" alt="Egzersiz1 Görseli">
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="{{ url_for('static', filename='img/egzersiz2.png') }}" class="img-fluid rounded mb-3" alt="Egzersiz2 Görseli">
+        <h4 class="fw-bold">Sana Özel Egzersiz Önerileri</h4>
+        <p>Yapay zeka sistemimiz; yaş, kilo, BMI, mevcut fiziksel aktivite düzeyi gibi verilerinize göre size özel bir egzersiz planı oluşturur.Her vücut farklıdır, bu yüzden hazırlanan öneriler de tamamen sizin ihtiyacınıza özeldir.</p>
+        <img src="{{ url_for('static', filename='img/egzersiz3.png') }}" class="img-fluid rounded mb-3" alt="Egzersiz3 Görseli">
+      </div>
+
+      <div class="col-md-4">
+            <h4 class="fw-bold">
+                Genel olarak herkesin<br>
+                uygulayabileceği şu<br>
+                altın egzersiz önerileri<br>
+                her zaman başlangıç<br>
+                için idealdir:
+            </h4>
+
+            <div class="egzersiz-bolum">
+              <h5>
+                Aerobik Egzersizler (Kardiyo)
+              </h5>
+                <p>Haftada en az 150 dakika orta tempolu aerobik egzersiz yapmanız önerilir.</p>
+                <ul>
+                    <li>Tempolu yürüyüş (günde 30 dakika).</li>
+                    <li>Bisiklet sürme.</li>
+                    <li>Yüzme.</li>
+                    <li>Hafif koşu veya jogging.</li>
+                </ul>
+            </div>
+
+            <div class="egzersiz-bolum">
+                <h5>
+                    Direnç (Kuvvet) Egzersizleri
+                </h5>
+                <p>Haftada en az 2 gün kas güçlendirici egzersizler yapın.</p>
+                <ul>
+                    <li>Ağırlık kaldırma (hafif dambıllar veya vücut ağırlığı ile çalışmak).</li>
+                    <li>Mekik, squat, şınav gibi temel vücut egzersizleri.</li>
+                </ul>
+            </div>
+
+            <div class="egzersiz-bolum">
+                <h5>
+                    Esneme ve Denge Egzersizleri
+                </h5>
+                <p>Haftada en az 2–3 gün esneme ve denge çalışmaları önerilir.</p>
+                <ul>
+                    <li>Yoga (özellikle diyabet dostu yoga rutinleri).</li>
+                    <li>Pilates.</li>
+                    <li>Basit esneme hareketleri (omuz, bacak, bel).</li>
+                </ul>
+            </div>
+        </div>
+
+<div class="row mt-5">
+  <div class="col-md-5">
+    <!-- Egzersiz Planı -->
+    <h5 class="fw-bold">Bu hafta için sana önerilen egzersiz planı</h5>
+    <table id="egzersiz-tablosu" class="table table-bordered">
+      <thead>
+        <tr><th>GÜN</th><th>EGZERSİZ ÖNERİSİ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pazartesi</td><td id="pazartesi">{{ plan["Pazartesi"] if plan else "-" }}</td></tr>
+        <tr><td>Salı</td><td id="sali">{{ plan["Salı"] if plan else "-" }}</td></tr>
+        <tr><td>Çarşamba</td><td id="carsamba">{{ plan["Çarşamba"] if plan else "-" }}</td></tr>
+        <tr><td>Perşembe</td><td id="persembe">{{ plan["Perşembe"] if plan else "-" }}</td></tr>
+        <tr><td>Cuma</td><td id="cuma">{{ plan["Cuma"] if plan else "-" }}</td></tr>
+        <tr><td>Cumartesi</td><td id="cumartesi">{{ plan["Cumartesi"] if plan else "-" }}</td></tr>
+        <tr><td>Pazar</td><td id="pazar">{{ plan["Pazar"] if plan else "-" }}</td></tr>
+      </tbody>
+    </table>
+    <button id="planOlusturBtn" class="btn btn-orange mt-2">Haftalık Egzersiz Planı Öner</button>
+  </div>
+
+  <div class="col-md-4">
+    <!-- Ekstra İpuçları -->
+    <h6>Sağlıklı Hareket için Ekstra İpuçları</h6>
+    <ul class="custom-list">
+      <li>Küçük Rotalar: Günde 8000 adım hedefle</li>
+      <li>Merdivenleri tercih et</li>
+      <li>Kısa egzersiz molaları planla</li>
+      <li>Egzersiz partneri edinerek motivasyon artır</li>
+    </ul>
+  </div>
+
+  <div class="col-md-3 d-flex align-items-center justify-content-center">
+    <!-- Motivasyon Cümlesi -->
+    <h5 class="motivasyon-text text-center fw-bold">
+      Düzenli egzersiz,<br>
+      diyabetle savaşta <br>
+      en güçlü silahlarından <br>
+      biridir. Kan şekeri<br>
+      seviyelerini dengeler,<br>
+      insülin direncini <br>
+      azaltır ve vücudunun<br>
+      kendi kendini koruma<br>
+      gücünü artırır.
+    </h5>
+  </div>
+</div>
+
+
+<div class="container my-4">
+  <div class="takip-kutu p-4">
+    <h5 class="fw-bold">Günlük Egzersiz Takibi</h5>
+    <form id="egzersizForm">
+      <textarea id="egzersizAlani" class="form-control mb-3" rows="4" placeholder="Bugünkü egzersizini ve hissettiklerini buraya yazabilirsin...">{{ egzersiz_not }}</textarea>
+      <button type="submit" class="btn btn-orange">Kaydet</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div id="flash-message" class="alert alert-{{ category }} text-center mt-3">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <!-- Bülten Aboneliği -->
+      <section class="py-5 text-center">
+        <div class="container">
+          <h3 class="mb-3 fw-bold">Haber bültenimize katıl</h3>
+          <form action="{{ url_for('abone') }}" method="POST" class="d-flex justify-content-center gap-2">
+            <input type="email" name="email" class="form-control w-50" placeholder="E-mail" required>
+            <button class="btn btn-orange">Bize abone ol</button>
+          </form>
+        </div>
+      </section>
+    
+      <!-- Alt Bilgi (Footer) -->
+      <footer class="bg-gradient-green text-white py-4">
+        <div class="container d-flex flex-column flex-lg-row justify-content-between">
+          <div>
+            <!-- Alt Logo Yer Tutucu -->
+               <!-- Logo ve yazı yan yana -->
+            <div class="d-flex align-items-center mb-2">
+                <div class="footer-logo me-2"></div> <!-- Logo -->
+                <span class="footer-brand-text">diabalysis</span> <!-- Yanındaki yazı -->
+            </div>
+            <p>Sağlıklı Beden, Mutlu Yaşam Erken Tespit Sağlıklı Gelecek</p>
+          </div>
+    
+          <div>
+            <h6>İletişim</h6>
+            <p><i class="fas fa-phone-alt me-2"></i>+90 546 525 8272</p>
+            <p><i class="fas fa-envelope me-2"></i>diabalysis@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt me-2"></i>Atatürk Caddesi No:123, Daire:5 Beşiktaş, İstanbul</p>
+          </div>
+          <div>
+            <h6>Harita</h6>
+            <div class="map"></div> <!-- Harita görseli buraya -->
+          </div>
+        </div>
+        
+        <!-- İletişim ile sosyal medya ikonları arasındaki çizgi -->
+        <hr class="footer-divider">
+    
+    
+        <!-- Sosyal medya ikonları PNG (ortalanmış) -->
+        <div class="text-center mt-4">
+            <img src="{{ url_for('static', filename='img/sosyalmedyaicons.png') }}" alt="Sosyal Medya İkonları" class="social-icons-img">
+        </div>
+        <!-- Telif hakkı -->
+        <div class="text-center mt-3 small">© 2023 diabalysis - Tüm Hakları Saklıdır</div>
+      </footer>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script>
+        // Flash mesajı 3 saniye sonra otomatik gizle
+        setTimeout(function() {
+          const msg = document.getElementById('flash-message');
+          if (msg) {
+            msg.style.transition = "opacity 0.5s ease";
+            msg.style.opacity = 0;
+            setTimeout(() => msg.remove(), 500);
+          }
+        }, 3000);
+      </script>
+
+
+<script>
+  document.getElementById("egzersizForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const egzersizText = document.getElementById("egzersizAlani").value;
+
+    const response = await fetch("/egzersiz-notu-kaydet", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ not: egzersizText })
+    });
+
+    const result = await response.json();
+    alert(result.message);
+  });
+</script>
+
+<script>
+document.getElementById("planOlusturBtn").addEventListener("click", async () => {
+  const response = await fetch("/egzersiz-oneri-generate", {
+    method: "POST"
+  });
+
+  const plan = await response.json();
+  const rows = document.querySelectorAll("#egzersiz-tablosu tbody tr");
+
+  rows.forEach(row => {
+    const gun = row.cells[0].innerText;
+    const egzersizHucre = row.cells[1];
+    if (plan[gun]) {
+      egzersizHucre.innerText = plan[gun];
+    }
+  });
+});
+</script>
+
+
+
+</body>
+</html>

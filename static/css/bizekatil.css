@@ -1,0 +1,164 @@
+/* Genel yazı tipi ve arka plan */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+  }
+
+/* Navbar */
+nav {
+    background: linear-gradient(to right, #007D6E, #5EB47C); /* Aynı renk geçişi footer ile */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: black; /* Navbar'daki yazıları beyaz yapıyoruz */
+}
+
+.navbar-nav .nav-link.active {
+  color: #f3704d; /* Aktif sayfa için turuncu renk */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f3704d;
+}
+
+/* Logo stili */
+.logo {
+  width: 40px; /* Daha büyük boyut */
+  height: 40px; /* Daha büyük boyut */
+  background-image: url('/static/img/footerAcikRenkLogo.png');
+  background-size: contain; /* Arka plan resmi kutuya sığacak şekilde küçülür */
+  background-repeat: no-repeat; /* Arka planın tekrarlanmaması için */
+  background-position: center; /* Resmi ortalar */
+}
+
+
+/* Turuncu vurgulu metin */
+.text-orange {
+    color: #f3704d;
+  }
+  
+/* Turuncu buton */
+.btn-orange {
+    background-color: #f3704d;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border: none;
+  }
+  
+.btn-orange:hover {
+    background-color: #d85535;
+    color: white;
+  }
+  
+/* Form Başlıkları */
+h2, h3 {
+    font-weight: 600;
+    color: #333;
+  }
+  
+/* Formları Stilize Etme */
+form .form-label {
+    font-weight: 600;
+  }
+  
+form .form-control {
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Şifreni mi unuttun? yazısı için stil */
+a {
+    color: #333; /* Siyah renk */
+    text-decoration: none; /* Altını çizmemek için */
+  }
+
+/* Şifreni mi unuttun? yazısı ve butonun aynı satırda yer alması */
+form .mb-3.d-flex {
+    display: flex;
+    justify-content: space-between; /* Şifreni mi unuttun? ve Giriş Yap butonunu aynı satırda yerleştirir */
+    align-items: center; /* Dikey hizalamayı sağlarız */
+  }
+  
+form .btn-orange {
+    background-color: #f3704d;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border: none;
+}
+  
+form .btn-orange:hover {
+    background-color: #d85535;
+    color: white;
+  }
+
+
+/* Footer arka planı */
+.bg-gradient-green {
+  background: linear-gradient(to right, #007D6E, #5EB47C);
+  }
+  
+  /* Footer logosu */
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    background-image: url('/static/img/footerAcikRenkLogo.png'); /* Buraya footer logosunun yolu */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Footer marka yazısı */
+.footer-brand-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white; /* Beyaz renk */
+  }
+  
+
+/* Harita görseli */
+.map {
+    background-image: url('/static/img/harita.png'); /* Harita PNG */
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 100px;
+  }
+  
+/* Kart metni */
+.feature-card p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+.footer-divider { /* İletişim ile sosyal medya ikonları arasındaki çizgi*/
+    border: none; 
+    height: 1px;  
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+.social-icons-img {
+    max-width: 200px; /* İkon PNG toplam genişliği */
+    height: auto;
+    filter: brightness(1.1); /* Hafif parlaklık efekti */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+  
+.social-icons-img:hover {
+    opacity: 1;
+  }
+
+footer i {
+    color: white;  /* İletişim kısmındaki ikonlar için */
+    min-width: 20px;
+  }
