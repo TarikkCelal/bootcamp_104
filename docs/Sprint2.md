@@ -32,13 +32,13 @@ Ekip olarak günlük iletişim WhatsApp üzerinden yürütüldü. Ayrıca 1 adet
 
 Sprint board, Notion üzerinden takip edilmiştir.
 
-
+./sprint 2.2.PNG
 
 ## 💻 Ürün Durumu: Ekran Görüntüleri
 
 Ana sayfa ve tahmin ekranı tamamlanmıştır. API bağlantısı beklenmektedir.
 
-
+./sprint 2.1.PNG
 
 ## ✅ Sprint Review
 
