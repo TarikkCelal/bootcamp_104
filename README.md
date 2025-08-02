@@ -11,10 +11,8 @@
 | İsim             | Rol                      | Sorumluluklar                        |
 |------------------|--------------------------|--------------------------------------|
 | Tarık Üzgör      | Scrum Master / Developer | Proje yönetimi, LLM entegrasyonu     |
-| Ali Rıza Yılmaz  | Developer                | Frontend arayüzü                     |
-| Neriman Turhan   | Developer                | API bağlantısı                       |
-| Nurican Sarıkaya | Developer                | Prompt mühendisliği                  |
-| Şeyma Ersoy      | Developer                | Backend                              |
+| Neriman Turhan   | Developer                | Frontend tasarımı, Backend           |
+| Şeyma Ersoy      | Developer                | Backend, Proje tanıtımı              |
 
 ---
 
@@ -29,7 +27,7 @@ Kullanıcının birden fazla ilaç ismi girmesiyle birlikte, yapay zeka destekli
 | Katman         | Kullanılan Teknoloji                    |
 |----------------|-----------------------------------------|
 | Backend        | Google Gemini API                       |
-| Frontend       | Karar verilmedi                         |
+| Frontend       | FastAPI                                 |
 | NLP / Prompt   | Önceden tanımlı tıbbi analiz promptları |
 | Dokümantasyon  | Notion                                  |
 
@@ -42,12 +40,6 @@ Kullanıcının birden fazla ilaç ismi girmesiyle birlikte, yapay zeka destekli
 
 - 📖 **İlaç Bilgisi Sağlama**  
   İlaçların kullanım alanı, bilinen yan etkileri ve dikkat edilmesi gereken durumlar kullanıcıya sunulur.
-
-- 🧪 **Tahlil Yorumu (Sprint 2+)**  
-  Kullanıcı tahlil değerlerini girebilir, sistem bunları yorumlar. (CRP, Ferritin vb.)
-
-- 📄 **(Opsiyonel) PDF ile Otomatik Yorumlama**  
-  Laboratuvar sonuçlarının PDF üzerinden okunup analiz edilmesi planlanmaktadır.
 
 ---
 
