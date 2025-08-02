@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MediGuardAI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px auto 20px auto;
+            max-width: 700px;
+            text-align: center;
+            background-color: #f5f8fa;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #long-answer {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+            text-align: left;
+            white-space: pre-wrap;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button#toggle-btn {
+            margin-top: 15px;
+            background-color: #2ecc71;
+        }
+        button#toggle-btn:hover {
+            background-color: #27ae60;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        #short-answer {
+            background: #eaf2f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px auto 0 auto;
+            max-width: 700px;
+            text-align: left;
+            white-space: pre-wrap;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .examples {
+            color: #999999;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: left;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="/static/logo.png" alt="MediGuardAI Proje Logosu" style="max-width: 70%; height: auto; margin-top: 70px; margin-bottom: 30px;">
+
+    <div class="examples">
+        <div>Aspirin ne işe yarar?</div>
+        <div>Aspirin ve Parasetamol etkileşiminde ne olur?</div>
+    </div>
+
+    <form method="post" id="queryForm">
+        <textarea name="user_input" placeholder="İlaç veya ilaç etkileşimi ile ilgili sorularınızı buraya yazın..." required></textarea>
+        <br />
+        <button type="submit">Analiz Et</button>
+    </form>
+
+    {% if short_answer %}
+    <h2>Sonuç:</h2>
+    <div id="short-answer">{{ short_answer | safe }}</div>
+
+    {% if long_answer_html %}
+    <button id="toggle-btn" onclick="toggleLongAnswer()">🔽 Daha fazla bilgi için tıklayın</button>
+    <div id="long-answer" style="display: none;">{{ long_answer_html | safe }}</div>
+    {% endif %}
+    {% endif %}
+
+    <script>
+        const textarea = document.querySelector('textarea[name="user_input"]');
+        const form = document.getElementById('queryForm');
+        textarea.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                form.submit();
+            }
+        });
+
+        function toggleLongAnswer() {
+            const longDiv = document.getElementById("long-answer");
+            const btn = document.getElementById("toggle-btn");
+            if (!longDiv || !btn) return;
+
+            if (longDiv.style.display === "none") {
+                longDiv.style.display = "block";
+                btn.textContent = "🔼 Daha az göster";
+            } else {
+                longDiv.style.display = "none";
+                btn.textContent = "🔽 Daha fazla bilgi için tıklayın";
+            }
+        }
+    </script>
+</body>
+</html>
