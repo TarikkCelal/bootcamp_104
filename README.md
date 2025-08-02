@@ -77,7 +77,7 @@ Tüm görevler, sprint notları ve proje dokümantasyonu **Notion üzerinden** t
 
 ## 🖼️ Ürün Durumu
 
-Aşağıda sprintlere göre güncel ekran görüntüleri, prototipler veya demo bağlantıları paylaşılacaktır.
+Tamamlandı. Yayınlanmaya hazır durumda.
 
 ---
 
