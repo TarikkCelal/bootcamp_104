@@ -37,9 +37,9 @@ Sprint board, Notion üzerinden takip edilmiştir.
 
 ## 💻 Ürün Durumu: Ekran Görüntüleri
   ![Ürün Son Durumu](Sprint3.0.PNG)
+  ![Ürün Son Durumu](Sprint3.3.PNG)
   ![Ürün Son Durumu](Sprint3.1.PNG)
   ![Ürün Son Durumu](Sprint3.2.PNG)
-  ![Ürün Son Durumu](Sprint3.3.PNG)
 
 ---
 
