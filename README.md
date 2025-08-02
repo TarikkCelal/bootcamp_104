@@ -13,7 +13,7 @@
 | Tarık Üzgör      | Scrum Master / Developer | Proje yönetimi, LLM entegrasyonu     |
 | Neriman Turhan   | Developer                | Frontend tasarımı, Backend           |
 | Şeyma Ersoy      | Developer                | Backend, Proje tanıtımı              |
-| Şeyma Ersoy      | Developer                | Promt Tasarımı                       |
+| Nurican Sarıkaya | Developer                | Promt Tasarımı                       |
 
 ---
 
