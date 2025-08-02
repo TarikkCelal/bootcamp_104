@@ -31,16 +31,15 @@ Ekip olarak günlük iletişim WhatsApp üzerinden sürdürüldü. Ayrıca 1 ade
 ## 🗂️ Sprint Board (Notion)
 Sprint board, Notion üzerinden takip edilmiştir.
 
-> 📸 **Sprint Board Ekran Görüntüsü eklenecek**
+![Sprint Board Ekran Görüntüsü](Sprint3.4.PNG)
 
 ---
 
 ## 💻 Ürün Durumu: Ekran Görüntüleri
-- Ana sayfa
-- Girdi ekranı
-- Sonuç ekranı
-
-> 📸 **Ürün Prototipi Ekran Görüntüsü eklenecek**
+  ![Ürün Son Durumu](Sprint3.0.PNG)
+  ![Ürün Son Durumu](Sprint3.1.PNG)
+  ![Ürün Son Durumu](Sprint3.2.PNG)
+  ![Ürün Son Durumu](Sprint3.3.PNG)
 
 ---
 
