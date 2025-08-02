@@ -3,3 +3,4 @@ jinja2
 python-multipart
 google-generativeai
 markdown
+uvicorn
